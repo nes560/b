@@ -19,11 +19,17 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Serve u
 // --- 1. KONFIGURASI DATABASE (gunakan pool untuk stabilitas koneksi) ---
 // Use environment variables so the app can run in Docker / hosted environments.
 // --- KONFIGURASI DATABASE ---
-const DB_HOST = process.env.DB_HOST || 'localhost';
-const DB_USER = process.env.DB_USER || 'root';
-const DB_PASSWORD = process.env.DB_PASSWORD || '';
-const DB_NAME = process.env.DB_NAME || 'tukang_db';
-const DB_PORT = process.env.DB_PORT || 3306;
+const DB_HOST = process.env.DB_HOST;
+const DB_USER = process.env.DB_USER;
+const DB_PASSWORD = process.env.DB_PASSWORD;
+const DB_NAME = process.env.DB_NAME;
+const DB_PORT = process.env.DB_PORT;
+
+//const DB_HOST = process.env.DB_HOST || 'localhost';
+//const DB_USER = process.env.DB_USER || 'root';
+//const DB_PASSWORD = process.env.DB_PASSWORD || '';
+//const DB_NAME = process.env.DB_NAME || 'tukang_db';
+//const DB_PORT = process.env.DB_PORT || 3306;
 
 const db = mysql.createPool({
     host: DB_HOST,
@@ -375,3 +381,4 @@ app.listen(PORT, () => {
     console.log(`🚀 Server berjalan di: http://localhost:${PORT}`);
 
 });
+
