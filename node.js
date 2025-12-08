@@ -385,10 +385,14 @@ app.use((err, req, res, next) => {
     const message = err && err.message ? err.message : 'Internal Server Error';
     res.status(500).json({ success: false, message });
 });
+app.get('/ping', (req, res) => {
+  res.json({ status: "OK", message: "pong", time: Date.now() });
+});
 
 app.listen(PORT, () => {
     console.log(`🚀 Server berjalan di: http://localhost:${PORT}`);
 
 });
+
 
 
