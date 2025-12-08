@@ -388,11 +388,15 @@ app.use((err, req, res, next) => {
 app.get('/ping', (req, res) => {
   res.json({ status: "OK", message: "pong", time: Date.now() });
 });
+app.get("/", (req, res) => {
+    res.send("API Handyman Backend is running");
+});
 
 app.listen(PORT, () => {
     console.log(`🚀 Server berjalan di: http://localhost:${PORT}`);
 
 });
+
 
 
 
