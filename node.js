@@ -149,7 +149,7 @@ db.getConnection((err, connection) => {
 });
 
 // --- API AUTH & PESANAN (YG LAMA) ---
-app.post('/api/register', (req, res) => {
+app.post('/register', (req, res) => {
     // Debug: print incoming body to ensure frontend sends tipe_pengguna
     console.log('\n[DEBUG] /api/register called with body:', req.body);
 
@@ -164,7 +164,7 @@ app.post('/api/register', (req, res) => {
     });
 });
 
-app.post('/api/login', (req, res) => {
+app.post('/login', (req, res) => {
     const { email, password } = req.body;
     const sql = 'SELECT * FROM users WHERE email = ? AND password = ?';
     db.query(sql, [email, password], (err, result) => {
@@ -177,7 +177,7 @@ app.post('/api/login', (req, res) => {
     });
 });
 
-app.post('/api/pesanan', (req, res) => {
+app.post('/pesanan', (req, res) => {
     // NOTE: This route previously accepted JSON with a `foto` field.
     // We'll keep backward compatibility by rejecting if no file provided.
     const { nama_user, kategori, deskripsi, alamat, foto } = req.body;
@@ -193,7 +193,7 @@ app.post('/api/pesanan', (req, res) => {
 });
 
 // --- GET semua pesanan untuk ditampilkan di halaman Orderan ---
-app.get('/api/pesanan', (req, res) => {
+app.get('/pesanan', (req, res) => {
     const sql = "SELECT * FROM pesanan ORDER BY id DESC";
     db.query(sql, (err, results) => {
         if (err) {
@@ -205,7 +205,7 @@ app.get('/api/pesanan', (req, res) => {
 });
 
 // --- PUT /api/pesanan/:id - Update status pesanan ---
-app.put('/api/pesanan/:id', (req, res) => {
+app.put('/pesanan/:id', (req, res) => {
     const { id } = req.params;
     const { status } = req.body;
     
@@ -396,6 +396,7 @@ app.listen(PORT, () => {
     console.log(`🚀 Server berjalan di: http://localhost:${PORT}`);
 
 });
+
 
 
 
