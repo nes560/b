@@ -1,4 +1,4 @@
-const express = require('express');
+https://docs.google.com/forms/d/e/1FAIpQLSc4Swj2rSx5n5rbpkxIEgLY83HWFLG6pKtzxCfXnIZvQ107ww/viewform?usp=headerconst express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -177,7 +177,7 @@ app.post('/login', (req, res) => {
     });
 });
 
-app.post('/pesanan', (req, res) => {
+app.post('/api/pesanan', (req, res) => {
     // NOTE: This route previously accepted JSON with a `foto` field.
     // We'll keep backward compatibility by rejecting if no file provided.
     const { nama_user, kategori, deskripsi, alamat, foto } = req.body;
@@ -193,7 +193,7 @@ app.post('/pesanan', (req, res) => {
 });
 
 // --- GET semua pesanan untuk ditampilkan di halaman Orderan ---
-app.get('/pesanan', (req, res) => {
+app.get('/api/pesanan', (req, res) => {
     const sql = "SELECT * FROM pesanan ORDER BY id DESC";
     db.query(sql, (err, results) => {
         if (err) {
@@ -205,7 +205,7 @@ app.get('/pesanan', (req, res) => {
 });
 
 // --- PUT /api/pesanan/:id - Update status pesanan ---
-app.put('/pesanan/:id', (req, res) => {
+app.put('/api/pesanan/:id', (req, res) => {
     const { id } = req.params;
     const { status } = req.body;
     
@@ -396,6 +396,7 @@ app.listen(PORT, () => {
     console.log(`🚀 Server berjalan di: http://localhost:${PORT}`);
 
 });
+
 
 
 
